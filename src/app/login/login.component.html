@@ -1,0 +1,26 @@
+<section class="w-100">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h1 class="mb-5">Login</h1>
+                        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                            <div class="form-outline mb-4">
+                                <input formControlName="email" class="form-control form-control-lg" type="email" placeholder="Email"/>
+                                <mat-error *ngIf="submitted && hasError('email','required') && !hasError('email','touched')">Email is required</mat-error>
+                                <mat-error *ngIf="hasError('email','pattern') && !hasError('email','touched')">Invalid Email</mat-error>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input formControlName="password" class="form-control form-control-lg" type="password" placeholder="Password"/>
+                                <mat-error *ngIf="submitted && hasError('password','required') && !hasError('password','touched')">Password is required</mat-error>
+                            </div>
+                            <button [disabled]="!submitted && loginForm.invalid" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        </form>
+                        <span class="mt-2" type="button" routerLink="/register">New User? Register here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

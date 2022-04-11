@@ -1,0 +1,48 @@
+<div class="m-0">
+  <app-nav-bar></app-nav-bar>
+</div>
+
+<!-- <mat-spinner *ngIf="isloading"></mat-spinner> -->
+
+<div class="m-0 p-0">
+  <table class="table">
+    <thead class="col">
+      <tr class="text-center">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody class="col-md-12">
+      <tr class="text-center" *ngFor="let a of data">
+        <th class="pt-3">{{ a.id }}</th>
+        <td class="pt-3">{{ a.name }}</td>
+        <td class="pt-3">{{ a.email }}</td>
+        <td class="pt-3">{{ a.phone_no }}</td>
+        <td>
+          <button
+            type="button"
+            (click)="showPopup(a)" 
+            [matMenuTriggerFor]="menu"
+            class="btn btn-outline-primary buttonFont w-50"
+          >
+            View Candidate
+          </button>
+          <mat-menu #menu="matMenu">
+              <app-candidate-profile [candidateData]="a"></app-candidate-profile>
+        </mat-menu>
+        </td>
+        <td>
+          <button
+            type="button"
+            (click)="deleteUser(a)"
+            class="btn btn-outline-danger buttonFont w-50"
+          >
+            Delete Candidate
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

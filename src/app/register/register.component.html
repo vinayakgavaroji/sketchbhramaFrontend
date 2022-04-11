@@ -1,0 +1,40 @@
+<section class="w-100">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body text-center">
+                        <h1 class="mb-5">Register</h1>
+                        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                            <div class="form-outline mb-4">
+                                <input formControlName="id" class="form-control form-control-lg" type="name" placeholder="User Id"/>
+                                <mat-error *ngIf="submitted && hasError('id','required') && !hasError('id','touched')">Id is required field</mat-error>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input formControlName="name" class="form-control form-control-lg" type="name" placeholder="Name"/>
+                                <mat-error *ngIf="submitted && hasError('name','required') && !hasError('name','touched')">Name is required field</mat-error>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input formControlName="email" class="form-control form-control-lg" type="email" placeholder="Email"/>
+                                <mat-error *ngIf="submitted && hasError('email','required') && !hasError('email','touched')">Email is required field</mat-error>
+                                <mat-error *ngIf="hasError('email','pattern') && !hasError('email','touched')">Invalid pattern</mat-error>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input formControlName="phoneNo" class="form-control form-control-lg" type="name" placeholder="Phone number"/>
+                                <mat-error *ngIf="submitted && hasError('phoneNo','required') && !hasError('phoneNo','touched')">phone number is required field</mat-error>
+                                <!-- <mat-error *ngIf="hasError('phoneNo','minLength') && !hasError('phoneNo','touched')">Invalid pattern</mat-error> -->
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input formControlName="password" type="password" class="form-control form-control-lg" type="name" placeholder="Password"/>
+                                <mat-error *ngIf="submitted && hasError('password','required') && !hasError('password','touched')">Password is required field</mat-error>
+                            </div>
+                            <button [disabled]="!submitted && registerForm.invalid" class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                        </form>
+                        <span class="mt-2" type="button" routerLink="/login">Already a user? Login</span>
+                    </div>
+                    <h3 class="bg-success d-flex justify-content-center align-items-center rounded" style="color: white;" *ngIf="registeredMsg">User inserted successfully.!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
